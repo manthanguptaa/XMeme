@@ -1,5 +1,7 @@
+//3rd party library
 const mongoose = require('mongoose')
 
+//Meme Schema
 const memeSchema = new mongoose.Schema({
     name: {
         type: String,

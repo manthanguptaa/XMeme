@@ -1,5 +1,7 @@
+//importing files
 const Meme = require('../model/meme')
 
+//getAllMemes function returns JSON structure with all the memes
 exports.getAllMemes = async (req, res, next) => {
     try {
         const memes = await Meme.find()
@@ -9,6 +11,7 @@ exports.getAllMemes = async (req, res, next) => {
     }
 }
 
+//getMemeById function returns JSON structure with the contents of a meme to which id matches 
 exports.getMemeById = async (req, res, next) => {
     try {
         const memes = await Meme.findById(req.params.id)
@@ -18,6 +21,7 @@ exports.getMemeById = async (req, res, next) => {
     }
 }
 
+//postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
     const memes = new Meme({
         name: req.query.name,
@@ -33,6 +37,7 @@ exports.postMeme = async (req, res, next) => {
     }
 }
 
+//updateMeme function updates the content of the meme and returns the updated JSON structure 
 exports.updateMeme = async (req, res, next) => {
     try {
         const m = await Meme.findById(req.params.id)

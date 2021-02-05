@@ -18,9 +18,10 @@ con.on('open', () => {
     console.log('connected...')
 })
 
+//middleware functions
+
 app.use(express.json())
 
-//middleware functions
 app.use('/memes', memeRoute)
 
 //listening to port 8081
