@@ -14,6 +14,15 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+router.get('/:id', async (req, res, next) => {
+    try {
+        const memes = await Meme.findById(req.params.id)
+        res.json(memes)
+    } catch (err) {
+        res.send('Error ' + err)
+    }
+})
+
 router.post('/', async (req, res, next) => {
     const memes = new Meme({
         name: req.query.name,
