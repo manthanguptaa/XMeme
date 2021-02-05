@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const memeRoute = require('./routes/memes')
 
 //string url for database
-const url = 'mongodb://localhost/MemeDB'
+const url = 'mongodb+srv://manthan109:<Revolt@1847>@cluster0.i0kwb.mongodb.net/<MemeDB>?retryWrites=true&w=majority'
 
 const app = express()
 
