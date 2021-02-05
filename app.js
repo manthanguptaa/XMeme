@@ -18,6 +18,8 @@ con.on('open', () => {
     console.log('connected...')
 })
 
+app.use(express.json())
+
 //middleware functions
 app.use('/memes', memeRoute)
 
