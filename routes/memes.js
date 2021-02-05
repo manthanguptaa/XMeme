@@ -1,41 +1,16 @@
 //3rd party libraries
 const express = require('express')
 
-const Meme = require('../model/meme')
+const memeController = require('../controllers/memeController')
 
 const router = express.Router()
 
-router.get('/', async (req, res, next) => {
-    try {
-        const memes = await Meme.find()
-        res.json(memes)
-    } catch (err) {
-        res.send('Error ' + err)
-    }
-})
+router.get('/', memeController.getAllMemes)
 
-router.get('/:id', async (req, res, next) => {
-    try {
-        const memes = await Meme.findById(req.params.id)
-        res.json(memes)
-    } catch (err) {
-        res.send('Error ' + err)
-    }
-})
+router.get('/:id', memeController.getMemeById)
 
-router.post('/', async (req, res, next) => {
-    const memes = new Meme({
-        name: req.query.name,
-        url: req.query.url,
-        caption: req.query.caption
-    })
+router.post('/', memeController.postMeme)
 
-    try {
-        const m = await memes.save()
-        res.send(m)
-    } catch (err) {
-        res.send('Error')
-    }
-})
+router.patch('/:id', memeController.updateMeme)
 
 module.exports = router
