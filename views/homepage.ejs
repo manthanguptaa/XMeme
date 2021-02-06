@@ -24,10 +24,13 @@
             <li><a href="/add-meme">Share Your Meme</a></li>
         </ul>
     </nav>
+
+    <!-- Display all the memes -->
+
     <% if(memes.length>0){ %>
         <% for(let i=0; i< memes.length; i++){ %>
             <div class="card">
-                <img src="<%=memes[i].url %>" alt="Avatar" style="width:100%">
+                <img src="<%=memes[i].url %>" alt="Meme" style="width:100%">
                 <div class="container">
                     <h4><b>
                             <%=memes[i].name %>

@@ -1,6 +1,7 @@
 //3rd party libraries
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
 
 //importing files
 const memeRoute = require('./routes/memes')
@@ -26,6 +27,7 @@ con.on('open', () => {
 app.set('view engine', 'ejs')
 
 //middleware functions
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use(express.json())
 

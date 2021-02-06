@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav>
@@ -21,6 +23,25 @@
             <li><a class="active" href="/add-meme">Share Your Meme</a></li>
         </ul>
     </nav>
-    
+
+    <!--Form to submit a meme-->
+
+    <form action='/memes' method="POST" style="border:1px solid #ccc">
+        <div class="container">
+            <label><b>Name</b></label>
+            <input name="name" type="text" placeholder="Enter Name" id="name" required>
+
+            <label><b>Caption</b></label>
+            <input name="caption" type="text" placeholder="Enter Caption" id="caption" required>
+
+            <label><b>Url</b></label>
+            <input name="url" type="url" placeholder="Enter url of image" id="url" required>
+
+            <div class="clearfix">
+                <button type="submit" class="signupbtn">Share</button>
+            </div>
+        </div>
+    </form>
 </body>
+
 </html>

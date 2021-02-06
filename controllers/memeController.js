@@ -23,17 +23,13 @@ exports.getMemeById = async (req, res, next) => {
 
 //postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
-    const memes = new Meme({
-        name: req.query.name,
-        url: req.query.url,
-        caption: req.query.caption
-    })
-
+    console.log(req.body)
+    const newMeme = new Meme(req.body)
     try {
-        const m = await memes.save()
-        res.send(m)
+        await newMeme.save()
+        res.redirect('/')
     } catch (err) {
-        res.send('Error')
+        res.send(err)
     }
 }
 
