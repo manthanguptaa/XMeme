@@ -9,6 +9,8 @@ const viewController = require('../controllers/viewController')
 
 const router = express.Router()
 
-router.get('/',viewController.getHomePage)
+router.get('/', viewController.getHomePage)
+
+router.get('/add-meme', viewController.getAddMemePage)
 
 module.exports = router
