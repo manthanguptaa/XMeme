@@ -23,7 +23,17 @@ exports.getMemeById = async (req, res, next) => {
 
 //postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
-    console.log(req.body)
+    const newMeme = new Meme(req.body)
+    try {
+        await newMeme.save()
+        res.json(newMeme.id,)
+    } catch (err) {
+        res.send(err)
+    }
+}
+
+//redirectPost function creates a new meme and redirects to homepage
+exports.redirectPost = async (req, res, next) => {
     const newMeme = new Meme(req.body)
     try {
         await newMeme.save()
