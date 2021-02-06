@@ -24,13 +24,24 @@
             <li><a href="/add-meme">Share Your Meme</a></li>
         </ul>
     </nav>
-    <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="Avatar" style="width:100%">
-        <div class="container">
-            <h4><b>John Doe</b></h4>
-            <p>Architect & Engineer</p>
-        </div>
-    </div>
+    <% if(memes.length>0){ %>
+        <% for(let i=0; i< memes.length; i++){ %>
+            <div class="card">
+                <img src="<%=memes[i].url %>" alt="Avatar" style="width:100%">
+                <div class="container">
+                    <h4><b>
+                            <%=memes[i].name %>
+                        </b></h4>
+                    <p>
+                        <%=memes[i].caption %>
+                    </p>
+                </div>
+            </div>
+            <% } %>
+    <% }else{ %>
+        <h1 id="error">Sorry! But we don't have any memes to show</h1>
+        <h1 id="error">Click on Share Your Meme option in the top right corner to be the first one</h1>
+    <% } %>
 </body>
 
 </html>

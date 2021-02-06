@@ -1,9 +1,6 @@
 //3rd party libraries
 const express = require('express')
 
-//importing core libraries
-const path = require('path')
-
 //importing files
 const memeController = require('../controllers/memeController')
 

@@ -52,6 +52,11 @@
   #check{
     display: none;
   }
+
+  #error{
+    margin-top: 5%;
+    margin-left: 5%;
+  }
   @media (max-width: 952px){
     label.logo{
       font-size: 30px;
