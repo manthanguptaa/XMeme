@@ -4,7 +4,7 @@ const Meme = require('../model/meme')
 //getAllMemes function returns JSON structure with all the memes
 exports.getAllMemes = async (req, res, next) => {
     try {
-        const memes = await Meme.find().sort({ "upload_time": 1 })
+        const memes = await Meme.find()
         let arr = []
         for (let i = 0; i < memes.length; ++i) {
             arr[i] = {
@@ -14,7 +14,6 @@ exports.getAllMemes = async (req, res, next) => {
                 "caption": memes[i].caption
             }
         }
-        console.log(arr)
         res.status(200).send(arr)
     } catch (err) {
         res.status(500).send('Sorry! Something is broken :(')
