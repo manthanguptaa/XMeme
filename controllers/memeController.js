@@ -15,9 +15,9 @@ exports.getAllMemes = async (req, res, next) => {
             }
         }
         console.log(arr)
-        res.send(arr)
+        res.status(200).send(arr)
     } catch (err) {
-        res.send('Error ' + err)
+        res.status(500).send('Sorry! Something is broken :(')
     }
 }
 
@@ -25,14 +25,14 @@ exports.getAllMemes = async (req, res, next) => {
 exports.getMemeById = async (req, res, next) => {
     try {
         const memes = await Meme.findById(req.params.id)
-        return res.json({
+        return res.status(200).json({
             "id": memes.id,
             "name": memes.name,
             "url": memes.url,
             "caption": memes.caption
         })
     } catch (err) {
-        res.send('Error ' + err)
+        res.status(500).send('Sorry! Something is broken :(')
     }
 }
 
@@ -41,9 +41,9 @@ exports.postMeme = async (req, res, next) => {
     const newMeme = new Meme(req.body)
     try {
         await newMeme.save()
-        return res.json({ "id": newMeme.id })
+        return res.status(201).json({ "id": newMeme.id })
     } catch (err) {
-        res.send(err)
+        res.status(500).send('Sorry! Something is broken :(')
     }
 }
 
@@ -54,7 +54,7 @@ exports.redirectPost = async (req, res, next) => {
         await newMeme.save()
         return res.redirect('/')
     } catch (err) {
-        res.send(err)
+        res.status(500).send('Sorry! Something is broken :(')
     }
 }
 
@@ -64,9 +64,9 @@ exports.updateMeme = async (req, res, next) => {
         const m = await Meme.findById(req.params.id)
         m.caption = req.body.caption
         m.url = req.body.url
-        const updatedMeme = await m.save()
+        await m.save()
         return res.sendStatus(200)
     } catch (err) {
-        res.send('Error')
+        res.status(500).send('Sorry! Something is broken :(')
     }
 }
