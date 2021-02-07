@@ -7,7 +7,7 @@ const Meme = require('../model/meme')
 exports.getHomePage = async(req, res, next) => {
     const memes = await Meme.find()
 
-    res.render('homepage',{
+    return res.render('homepage',{
         'memes': memes
     })
 }
@@ -15,7 +15,7 @@ exports.getHomePage = async(req, res, next) => {
 //getAddMemePage function renders the add-meme.ejs file to display add-mee page
 exports.getAddMemePage = (req, res, next) => {
     try {
-        res.render('add-meme')
+        return res.render('add-meme')
     } catch (err) {
         console.log(err)
     }

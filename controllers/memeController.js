@@ -5,7 +5,7 @@ const Meme = require('../model/meme')
 exports.getAllMemes = async (req, res, next) => {
     try {
         const memes = await Meme.find()
-        res.json(memes)
+        return res.json(memes)
     } catch (err) {
         res.send('Error ' + err)
     }
@@ -15,7 +15,7 @@ exports.getAllMemes = async (req, res, next) => {
 exports.getMemeById = async (req, res, next) => {
     try {
         const memes = await Meme.findById(req.params.id)
-        res.json(memes)
+        return res.json(memes)
     } catch (err) {
         res.send('Error ' + err)
     }
@@ -26,7 +26,7 @@ exports.postMeme = async (req, res, next) => {
     const newMeme = new Meme(req.body)
     try {
         await newMeme.save()
-        res.json(newMeme.id,)
+        return res.json(newMeme.id,)
     } catch (err) {
         res.send(err)
     }
@@ -37,7 +37,7 @@ exports.redirectPost = async (req, res, next) => {
     const newMeme = new Meme(req.body)
     try {
         await newMeme.save()
-        res.redirect('/')
+        return res.redirect('/')
     } catch (err) {
         res.send(err)
     }
@@ -50,7 +50,7 @@ exports.updateMeme = async (req, res, next) => {
         m.caption = req.body.caption
         m.url = req.body.url
         const updatedMeme = await m.save()
-        res.json(updatedMeme)
+        return res.json(updatedMeme)
     } catch (err) {
         res.send('Error')
     }

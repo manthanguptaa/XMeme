@@ -32,11 +32,14 @@
             <div class="card">
                 <img src="<%=memes[i].url %>" alt="Meme" style="width:100%">
                 <div class="container">
-                    <h4><b>
+                    <h2><b>
                             <%=memes[i].name %>
-                        </b></h4>
+                        </b></h2>
                     <p>
                         <%=memes[i].caption %>
+                    </p>
+                    <p>
+                        <%= memes[i].url %>
                     </p>
                 </div>
             </div>

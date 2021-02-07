@@ -14,6 +14,10 @@ const memeSchema = new mongoose.Schema({
     caption: {
         type: String,
         required: true
+    },
+    upload_time: {
+        type: Date,
+        default: Date.now
     }
 })
 
