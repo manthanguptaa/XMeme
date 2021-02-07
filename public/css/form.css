@@ -10,22 +10,14 @@ input[type=url] {
     /* set a style for all buttons*/
      
 button {
-        background-color: Green;
+        background-color: rgb(83, 151, 172);
         color: white;
         padding: 15px 20px;
         margin: 8px 0;
         cursor: pointer;
-        width: 100%;
+        width: 20%;
 }
     /*set styles for the cancel button*/
-     
-.cancelbtn {
-        padding: 15px 20px;
-        background-color: #FF2E00;
-}
-    /*float cancel and signup buttons and add an equal width*/
-     
-.cancelbtn,
 .signupbtn {
         float: left;
         width: 50%;
@@ -46,7 +38,6 @@ button {
       on extra small screens*/
      
 @media screen and (max-width: 300px) {
-        .cancelbtn,
         .signupbtn {
             width: 100%;
     }
