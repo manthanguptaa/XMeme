@@ -65,7 +65,7 @@ exports.updateMeme = async (req, res, next) => {
         m.caption = req.body.caption
         m.url = req.body.url
         const updatedMeme = await m.save()
-        return res.json(updatedMeme)
+        return res.sendStatus(200)
     } catch (err) {
         res.send('Error')
     }
