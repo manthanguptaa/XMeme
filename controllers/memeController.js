@@ -40,17 +40,23 @@ exports.getMemeById = async (req, res, next) => {
 
 //postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
-    if (validUrl.isUri(req.body.url)) {
-        const newMeme = new Meme(req.body)
-        try {
-            await newMeme.save()
-            return res.status(201).json({ "id": newMeme.id })
-        } catch (err) {
-            res.status(500).send('Sorry! Something is broken :(')
-        }
+    let check = await Meme.exists({ 'name': req.body.name, 'caption': req.body.caption, 'url': req.body.url })
+    if (check) {
+        return res.status(409).send('Duplicate post request')
     }
     else {
-        res.status(400).send('Not a valid url')
+        if (validUrl.isUri(req.body.url)) {
+            const newMeme = new Meme(req.body)
+            try {
+                await newMeme.save()
+                return res.status(201).json({ "id": newMeme.id })
+            } catch (err) {
+                return res.status(500).send('Sorry! Something is broken :(')
+            }
+        }
+        else {
+            return res.status(400).send('Not a valid url')
+        }
     }
 }
 

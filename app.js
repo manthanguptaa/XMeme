@@ -1,7 +1,8 @@
 //3rd party libraries
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 //importing files
 const memeRoute = require('./routes/memes')
@@ -33,6 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(methodOverride('_method'))
 
 app.use('/memes', memeRoute)
 

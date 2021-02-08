@@ -57,6 +57,12 @@
     margin-top: 5%;
     margin-left: 5%;
   }
+
+  #deleteButton{
+    background-color: red;
+    padding: 1%;
+    margin: 1%;
+  }
   
   @media (max-width: 952px){
     label.logo{

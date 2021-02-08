@@ -38,6 +38,9 @@
                     <p>
                         <%=memes[i].caption %>
                     </p>
+                    <form method="post" action="/memes/<%=memes[i].id %>?_method=DELETE">
+                        <input type="submit" name="_method" value="DELETE" id="deleteButton">
+                    </form>
                 </div>
             </div>
             <% } %>
