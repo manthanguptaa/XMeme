@@ -24,6 +24,8 @@
     "method-override": "^3.0.0",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.15",
+    "swagger-jsdoc": "^6.0.2",
+    "swagger-ui-express": "^4.1.6",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {

@@ -3,6 +3,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const swaggerJSDoc = require('swagger-jsdoc')
+const swaggerUI = require('swagger-ui-express')
 
 //importing files
 const memeRoute = require('./routes/memes')
@@ -14,6 +16,7 @@ const path = require('path')
 
 //string url for database
 const url = 'mongodb://localhost/MemeDB'
+//const prodUrl = "mongodb+srv://MemeDB:tBpiAfsCSwxY7zvv@cluster0.iqc9g.mongodb.net/MemeDB?retryWrites=true&w=majority"
 
 const app = express()
 
@@ -48,3 +51,27 @@ const PORT = process.env.PORT || 8081
 app.listen(PORT, () => {
     console.log('server started')
 })
+
+const swaggerOptions={
+    definition:{
+        openapi:'3.0.0',
+        info:{
+            title:'XMeme',
+            version:'1.0.0',
+            description:'Simple CRUD application',
+            contact:{
+                name:'Manthan Gupta',
+                email:'jayaramachandran@whizpath.com'
+            },
+            servers:["http://localhost:8081"]
+        }
+    },
+    apis:['/routes']
+}
+const swaggerDocs=swaggerJSDoc(swaggerOptions)
+
+const swagger = express()
+
+swagger.use('/swagger-ui',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+
+swagger.listen(8080)
