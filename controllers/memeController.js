@@ -1,3 +1,6 @@
+//3rd party libraries
+const validUrl = require('valid-url')
+
 //importing files
 const Meme = require('../model/meme')
 
@@ -37,12 +40,17 @@ exports.getMemeById = async (req, res, next) => {
 
 //postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
-    const newMeme = new Meme(req.body)
-    try {
-        await newMeme.save()
-        return res.status(201).json({ "id": newMeme.id })
-    } catch (err) {
-        res.status(500).send('Sorry! Something is broken :(')
+    if (validUrl.isUri(req.body.url)) {
+        const newMeme = new Meme(req.body)
+        try {
+            await newMeme.save()
+            return res.status(201).json({ "id": newMeme.id })
+        } catch (err) {
+            res.status(500).send('Sorry! Something is broken :(')
+        }
+    }
+    else {
+        res.status(400).send('Not a valid url')
     }
 }
 
@@ -68,4 +76,14 @@ exports.updateMeme = async (req, res, next) => {
     } catch (err) {
         res.status(500).send('Sorry! Something is broken :(')
     }
+}
+
+//deleteMeme function deletes the meme
+exports.deleteMeme = (req, res, next) => {
+    Meme.deleteOne({ _id: req.params.id }, (err) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        return res.redirect('/');
+    });
 }

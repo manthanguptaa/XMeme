@@ -21,4 +21,7 @@ router.post('/redirect', memeController.redirectPost)
 //PATCH request /memes/id to update meme content in the database
 router.patch('/:id', memeController.updateMeme)
 
+//DELETE request /memes/id to delete meme in the database
+router.delete('/:id', memeController.deleteMeme)
+
 module.exports = router

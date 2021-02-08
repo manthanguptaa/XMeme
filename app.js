@@ -41,6 +41,7 @@ app.use('/', viewRoute)
 app.use(errorController.getErrorPage)
 
 //listening to port 8081
-app.listen(8081, () => {
+const PORT = process.env.PORT || 8081
+app.listen(PORT, () => {
     console.log('server started')
 })
