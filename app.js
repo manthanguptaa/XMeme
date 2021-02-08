@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express')
+const cors = require('cors')
 
 //importing files
 const memeRoute = require('./routes/memes')
@@ -32,6 +33,8 @@ con.on('open', () => {
 app.set('view engine', 'ejs')
 
 //middleware functions
+app.use(cors())
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json())
@@ -63,15 +66,17 @@ const swaggerOptions={
                 name:'Manthan Gupta',
                 email:'jayaramachandran@whizpath.com'
             },
-            servers:["http://localhost:8081"]
+            servers: ["http://localhost:8081"]
         }
     },
-    apis:['/routes']
+    apis:['./routes/memes.js', './routes/views.js']
 }
 const swaggerDocs=swaggerJSDoc(swaggerOptions)
 
 const swagger = express()
 
+swagger.use(cors())
 swagger.use('/swagger-ui',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+
 
 swagger.listen(8080)

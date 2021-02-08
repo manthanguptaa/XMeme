@@ -65,12 +65,18 @@ exports.postMeme = async (req, res, next) => {
 
 //redirectPost function creates a new meme and redirects to homepage
 exports.redirectPost = async (req, res, next) => {
-    const newMeme = new Meme(req.body)
-    try {
-        await newMeme.save()
-        return res.redirect('/')
-    } catch (err) {
-        res.status(500).send('Sorry! Something is broken :(')
+    let check = await Meme.exists({ 'name': req.body.name, 'caption': req.body.caption, 'url': req.body.url })
+    if (check) {
+        return res.status(409).send('Duplicate post request')
+    }
+    else {
+        const newMeme = new Meme(req.body)
+        try {
+            await newMeme.save()
+            return res.redirect('/')
+        } catch (err) {
+            res.status(500).send('Sorry! Something is broken :(')
+        }
     }
 }
 
