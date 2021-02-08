@@ -7,6 +7,7 @@ const Meme = require('../model/meme')
 //getAllMemes function returns JSON structure with all the memes
 exports.getAllMemes = async (req, res, next) => {
     try {
+        //sorting memes in descending order of upload_time
         const memes = await Meme.find().sort({ "upload_time": -1 }).limit(100)
         let arr = []
         for (let i = 0; i < memes.length; ++i) {
@@ -40,11 +41,13 @@ exports.getMemeById = async (req, res, next) => {
 
 //postMeme function creates a new meme and returns the content 
 exports.postMeme = async (req, res, next) => {
+    //Checking for duplicate POST request
     let check = await Meme.exists({ 'name': req.body.name, 'caption': req.body.caption, 'url': req.body.url })
     if (check) {
         return res.status(409).send('Duplicate post request')
     }
     else {
+        //Checking if URL is valid or not
         if (validUrl.isUri(req.body.url)) {
             const newMeme = new Meme(req.body)
             try {
