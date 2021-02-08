@@ -1,5 +1,3 @@
-const memeController = require('./memeController')
-
 const Meme = require('../model/meme')
 
 
@@ -15,7 +13,7 @@ exports.getHomePage = async (req, res, next) => {
     }
 }
 
-//getAddMemePage function renders the add-meme.ejs file to display add-mee page
+//getAddMemePage function renders the add-meme.ejs file to display add-meme page
 exports.getAddMemePage = (req, res, next) => {
     try {
         return res.status(200).render('add-meme')

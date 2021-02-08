@@ -31,7 +31,7 @@ exports.getMemeById = async (req, res, next) => {
             "caption": memes.caption
         })
     } catch (err) {
-        res.status(500).send('Sorry! Something is broken :(')
+        res.status(500).send("Sorry! We couldn't find the meme")
     }
 }
 

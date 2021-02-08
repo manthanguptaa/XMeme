@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 //importing files
 const memeRoute = require('./routes/memes')
 const viewRoute = require('./routes/views')
+const errorController = require('./controllers/errorController')
 
 //importing core libraries
 const path = require('path')
@@ -27,7 +28,7 @@ con.on('open', () => {
 app.set('view engine', 'ejs')
 
 //middleware functions
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json())
 
@@ -36,6 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/memes', memeRoute)
 
 app.use('/', viewRoute)
+
+app.use(errorController.getErrorPage)
 
 //listening to port 8081
 app.listen(8081, () => {
