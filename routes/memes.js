@@ -57,7 +57,7 @@ router.get('/', cors(), memeController.getAllMemes)
  *    - in: path
  *      name: meme_id
  *      schema:
- *       type: integer
+ *       type: string
  *      required: true
  *      description: id of the meme
  *      example: 1
@@ -126,7 +126,7 @@ router.post('/redirect', memeController.redirectPost)
  *    - in: path
  *      name: meme_id
  *      schema:
- *       type: integer
+ *       type: string
  *      required: true
  *      description: id of the meme
  *      example: 1
@@ -149,7 +149,7 @@ router.patch('/:id', memeController.updateMeme)
  *    - in: path
  *      name: meme_id
  *      schema:
- *       type: integer
+ *       type: string
  *      required: true
  *      description: id of the meme
  *      example: 1

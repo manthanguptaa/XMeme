@@ -20,6 +20,7 @@ const url = 'mongodb://localhost/MemeDB'
 //const prodUrl = "mongodb+srv://MemeDB:tBpiAfsCSwxY7zvv@cluster0.iqc9g.mongodb.net/MemeDB?retryWrites=true&w=majority"
 
 const app = express()
+const swaggerApp = express()
 
 //connecting application to database
 mongoose.connect(url, { useNewUrlParser: true })
@@ -34,6 +35,7 @@ app.set('view engine', 'ejs')
 
 //middleware functions
 app.use(cors())
+swaggerApp.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -51,32 +53,31 @@ app.use(errorController.getErrorPage)
 
 //listening to port 8081
 const PORT = process.env.PORT || 8081
+const swaggerPORT = process.env.PORT || 8080
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.3',
+        info: {
+            title: 'XMeme',
+            version: '1.0.0',
+            description: 'Simple CRUD application',
+            'contact': {
+                'name': 'Manthan Gupta',
+                'email': 'manthangupta109@gmail.com'
+            },
+        },
+        servers: [{
+            url: "http://localhost:8081"
+        }]
+    },
+    apis: ['./routes/*.js']
+}
+const specs = swaggerJSDoc(swaggerOptions)
+
+swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
+
+swaggerApp.listen(swaggerPORT)
 app.listen(PORT, () => {
     console.log('server started')
 })
-
-const swaggerOptions={
-    definition:{
-        openapi:'3.0.0',
-        info:{
-            title:'XMeme',
-            version:'1.0.0',
-            description:'Simple CRUD application',
-            contact:{
-                name:'Manthan Gupta',
-                email:'jayaramachandran@whizpath.com'
-            },
-            servers: ["http://localhost:8081"]
-        }
-    },
-    apis:['./routes/memes.js', './routes/views.js']
-}
-const swaggerDocs=swaggerJSDoc(swaggerOptions)
-
-const swagger = express()
-
-swagger.use(cors())
-swagger.use('/swagger-ui',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
-
-
-swagger.listen(8080)
