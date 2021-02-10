@@ -17,7 +17,7 @@ const path = require('path')
 
 //string url for database
 
-if(process.env.NODE_ENV !=="production"){
+if (process.env.NODE_ENV !== "production") {
     require('dotenv').config()
 }
 
@@ -27,7 +27,12 @@ const app = express()
 const swaggerApp = express()
 
 //connecting application to database
-mongoose.connect(dbUrl, { useNewUrlParser: true })
+mongoose.connect(dbUrl, { useNewUrlParser: true }).then(() => {
+    console.log('MongoDB is connected')
+}).catch(err => {
+    console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+    setTimeout(connectWithRetry, 5000)
+})
 const con = mongoose.connection
 
 con.on('open', () => {
