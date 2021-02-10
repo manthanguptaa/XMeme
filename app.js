@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== "production") {
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MemeDB'
 
 const app = express()
-const swaggerApp = express()
+//const swaggerApp = express()
 
 //connecting application to database
 mongoose.connect(dbUrl, { useNewUrlParser: true }).then(() => {
@@ -62,7 +62,7 @@ app.use(errorController.getErrorPage)
 
 //listening to port 8081
 const port = process.env.PORT || 8081
-const swaggerPORT = process.env.PORT || 8080
+//const swaggerPORT = process.env.PORT || 8080
 
 const swaggerOptions = {
     definition: {
@@ -85,9 +85,10 @@ const swaggerOptions = {
 }
 const specs = swaggerJSDoc(swaggerOptions)
 
-swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
+//swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
+app.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 
 app.listen(port, () => {
     console.log('server started')
 })
-swaggerApp.listen(swaggerPORT)
+// swaggerApp.listen(swaggerPORT)
