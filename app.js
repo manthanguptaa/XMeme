@@ -16,14 +16,18 @@ const errorController = require('./controllers/errorController')
 const path = require('path')
 
 //string url for database
-const url = 'mongodb://localhost/MemeDB'
-//const prodUrl = "mongodb+srv://MemeDB:tBpiAfsCSwxY7zvv@cluster0.iqc9g.mongodb.net/MemeDB?retryWrites=true&w=majority"
+
+if(process.env.NODE_ENV !=="production"){
+    require('dotenv').config()
+}
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost/MemeDB'
 
 const app = express()
 const swaggerApp = express()
 
 //connecting application to database
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(dbUrl, { useNewUrlParser: true })
 const con = mongoose.connection
 
 con.on('open', () => {
