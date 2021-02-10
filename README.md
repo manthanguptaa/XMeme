@@ -18,3 +18,10 @@
 
 
 MVC architecture patter is used while developing the website and comments have been added properly to differentiate 
+
+#### Built With
+
+- [Node JS](https://nodejs.org/en/)
+- [Express JS](https://expressjs.com/)
+- [Mongodb](https://www.mongodb.com/)
+- [EJS](https://ejs.co/)
