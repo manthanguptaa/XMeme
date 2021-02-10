@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== "production") {
     require('dotenv').config()
 }
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost/MemeDB'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MemeDB'
 
 const app = express()
 const swaggerApp = express()
@@ -90,4 +90,4 @@ swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 app.listen(port, () => {
     console.log('server started')
 })
-//swaggerApp.listen(swaggerPORT)
+swaggerApp.listen(swaggerPORT)
