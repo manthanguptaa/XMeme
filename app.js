@@ -58,8 +58,6 @@ app.use('/memes', memeRoute)
 
 app.use('/', viewRoute)
 
-app.use(errorController.getErrorPage)
-
 //listening to port 8081
 const port = process.env.PORT || 8081
 //const swaggerPORT = process.env.PORT || 8080
@@ -87,6 +85,8 @@ const specs = swaggerJSDoc(swaggerOptions)
 
 //swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 app.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
+
+app.use(errorController.getErrorPage)
 
 app.listen(port, () => {
     console.log('server started')
