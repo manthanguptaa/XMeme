@@ -4,7 +4,7 @@
 
 ## Folder Structure
 
-> MVC architecture patter is used while developing the website and comments have been added properly to differentiate
+MVC architecture patter is used while developing the website and comments have been added properly to differentiate 
     .
     ├── controller                   # Main logic of the backend
     ├── model                        # Meme Schema
