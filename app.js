@@ -72,7 +72,8 @@ const swaggerOptions = {
             },
         },
         servers: [{
-            url: "http://localhost:8081"
+            url: "http://localhost:8081",
+            url: "https://damp-river-68338.herokuapp.com/"
         }]
     },
     apis: ['./routes/*.js']
@@ -84,4 +85,4 @@ swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 app.listen(PORT, () => {
     console.log('server started')
 })
-swaggerApp.listen(swaggerPORT)
+//swaggerApp.listen(swaggerPORT)
