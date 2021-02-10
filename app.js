@@ -56,7 +56,7 @@ app.use('/', viewRoute)
 app.use(errorController.getErrorPage)
 
 //listening to port 8081
-const PORT = process.env.PORT || 8081
+const port = process.env.PORT || 8081
 const swaggerPORT = process.env.PORT || 8080
 
 const swaggerOptions = {
@@ -82,7 +82,7 @@ const specs = swaggerJSDoc(swaggerOptions)
 
 swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log('server started')
 })
 //swaggerApp.listen(swaggerPORT)
