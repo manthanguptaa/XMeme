@@ -44,7 +44,7 @@ app.set('view engine', 'ejs')
 
 //middleware functions
 app.use(cors())
-swaggerApp.use(cors())
+//swaggerApp.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
