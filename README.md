@@ -28,3 +28,7 @@ MVC architecture patter is used while developing the website and comments have b
 - [Express JS](https://expressjs.com/)
 - [Mongodb](https://www.mongodb.com/)
 - [EJS](https://ejs.co/)
+
+## Database
+
+MongoDB used as Database.
