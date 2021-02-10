@@ -81,7 +81,7 @@ const specs = swaggerJSDoc(swaggerOptions)
 
 swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 
-swaggerApp.listen(swaggerPORT)
 app.listen(PORT, () => {
     console.log('server started')
 })
+swaggerApp.listen(swaggerPORT)
