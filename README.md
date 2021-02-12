@@ -66,7 +66,10 @@ Responsive website which makes it easier to use on smaller edge devices too and 
 Delete button added to delete any meme.
 
 
-Added page navigation to navigate between 2 different screens 
+Added page navigation to navigate between 2 different screens
+
+
+URL validation added
 
 
 localhost:8081 is used for main application and localhost:8080 for swagger api documentation
