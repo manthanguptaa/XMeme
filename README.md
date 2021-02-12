@@ -29,6 +29,23 @@ MVC architecture patter is used while developing the website and comments have b
 - [Mongodb](https://www.mongodb.com/)
 - [EJS](https://ejs.co/)
 
+## Installation
+For Ubuntu
+
+#### Clone Project
+
+```shell
+git clone https://github.com/Manthan109/XMeme.git
+```
+
+#### Running the project
+
+```shell
+cd XMeme\
+chmod +x test_server.sh
+./test_server.sh
+```
+
 ## Database
 
 MongoDB used as Database.
