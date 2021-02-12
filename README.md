@@ -49,3 +49,9 @@ chmod +x test_server.sh
 ## Database
 
 MongoDB used as Database.
+
+## Deployment
+
+Heroku
+https://damp-river-68338.herokuapp.com/
+
