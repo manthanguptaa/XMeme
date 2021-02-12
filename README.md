@@ -55,3 +55,15 @@ MongoDB used as Database.
 Heroku
 https://damp-river-68338.herokuapp.com/
 
+## Features
+
+The frontend and backend is not hosted on 2 different services. The frontend is getting rendered by the backend requests.
+
+
+Responsive website which makes it easier to use on smaller edge devices too and even on all types of device sizes.
+
+
+Delete button added to delete any meme.
+
+
+localhost:8081 is used for main application and localhost:8080 for swagger api documentation
