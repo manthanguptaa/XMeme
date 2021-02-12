@@ -20,7 +20,7 @@
     └── README.md
 
 
-MVC architecture patter is used while developing the website and comments have been added properly to differentiate 
+MVC architecture pattern is used while developing the website and comments have been added properly to differentiate 
 
 #### Built With
 
