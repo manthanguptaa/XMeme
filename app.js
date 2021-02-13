@@ -15,15 +15,16 @@ const errorController = require('./controllers/errorController')
 //importing core libraries
 const path = require('path')
 
-//string url for database
-
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config()
 }
 
+//string url for database
 //const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/MemeDB'
 const dbUrl = 'mongodb://localhost:27017/MemeDB'
 
+//Calling express instance
+//app is for the application and swaggerApp is for API Documentation
 const app = express()
 const swaggerApp = express()
 
@@ -55,14 +56,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(methodOverride('_method'))
 
+// /memes route
 app.use('/memes', memeRoute)
 
+// / route
 app.use('/', viewRoute)
 
-//listening to port 8081
-const port = process.env.PORT || 8081
-const swaggerPORT = process.env.PORT || 8080
-
+// Defining definition for swagger api documentation
 const swaggerOptions = {
     definition: {
         openapi: '3.0.3',
@@ -85,10 +85,15 @@ const swaggerOptions = {
 }
 const specs = swaggerJSDoc(swaggerOptions)
 
+//Swagger api documentation available at localhost:8080/swagger-ui
 swaggerApp.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 //app.use('/swagger-ui', swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use(errorController.getErrorPage)
+
+//listening to port 8081 and 8080
+const port = process.env.PORT || 8081
+const swaggerPORT = process.env.PORT || 8080
 
 app.listen(port, () => {
     console.log('server started')
